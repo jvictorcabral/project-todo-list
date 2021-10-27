@@ -1,4 +1,5 @@
 const ol = document.getElementById('lista-tarefas');
+// const myLi = document.querySelectorAll('.lista')
 
 function criarLi() {
   const input = document.getElementById('texto-tarefa');
@@ -35,3 +36,14 @@ function completed(event) {
   }
 }
 ol.addEventListener('dblclick', completed);
+
+function resetar() {
+  const btnReset = document.querySelector('#apaga-tudo');
+  btnReset.addEventListener('click', function () {
+    const linha = document.querySelectorAll('li');
+    for (let i = 0; i < linha.length; i += 1) {
+      ol.removeChild(linha[i]);
+    }
+  });
+}
+resetar();
