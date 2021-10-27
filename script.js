@@ -1,28 +1,37 @@
-  let ol = document.getElementById('lista-tarefas');
-
+const ol = document.getElementById('lista-tarefas');
 
 function criarLi() {
-  let input = document.getElementById('texto-tarefa');
-  let inputValue = input.value;
-  let li = document.createElement('li');
+  const input = document.getElementById('texto-tarefa');
+  const inputValue = input.value;
+  const li = document.createElement('li');
   li.className = 'lista';
   li.innerText = inputValue;
   ol.appendChild(li);
-  input.value = ""
+  input.value = '';
 }
 
 function criarTarefa() {
-  let botaoCriar = document.getElementById('criar-tarefa')
-  botaoCriar.addEventListener('click', criarLi)
+  const botaoCriar = document.getElementById('criar-tarefa');
+  botaoCriar.addEventListener('click', criarLi);
 }
 criarTarefa();
 
 function cinza(event) {
-  let colorCinza = document.querySelector('.selected');
+  const colorCinza = document.querySelector('.selected');
   if (colorCinza) {
-colorCinza.classList.remove('selected')
+    colorCinza.classList.remove('selected');
   }
-  event.target.classList.add('selected')
+  event.target.classList.add('selected');
 }
 
-ol.addEventListener('click', cinza)
+ol.addEventListener('click', cinza);
+
+function completed(event) {
+  const markCompleted = document.querySelector('.completed');
+  if (markCompleted) {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
+  }
+}
+ol.addEventListener('dblclick', completed);
